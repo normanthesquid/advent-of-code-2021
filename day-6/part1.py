@@ -1,6 +1,7 @@
 import os
 from typing import List
 from lanternFish import lantern_fish
+import time
 
 
 def simulate_fishes():
@@ -48,4 +49,6 @@ def read_input():
 
 
 if __name__ == "__main__":
+    start_time = time.time()
     simulate_fishes()
+    print("Process finished --- %s seconds ---" % (time.time() - start_time))

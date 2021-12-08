@@ -1,6 +1,7 @@
 import os
 from typing import List
 from display import display
+import time
 
 
 def check_displays():
@@ -30,4 +31,6 @@ def read_input() -> List[display]:
 
 
 if __name__ == "__main__":
+    start_time = time.time()
     check_displays()
+    print("Process finished --- %s seconds ---" % (time.time() - start_time))
