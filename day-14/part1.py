@@ -3,11 +3,11 @@ from typing import DefaultDict, Tuple
 import time
 
 
-def fold_paper():
+def process_polymer():
 
-    [template, rules] = read_input(False)
+    [template, rules] = read_input(True)
 
-    print(f"folds: {rules}")
+    print(f"rules: {rules}")
     
     for step in range(10):
         output = [template[0]]
@@ -66,5 +66,5 @@ def read_input(test=False) -> Tuple[list, dict]:
 
 if __name__ == "__main__":
     start_time = time.time()
-    fold_paper()
+    process_polymer()
     print("Process finished --- %s seconds ---" % (time.time() - start_time))
