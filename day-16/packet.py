@@ -2,7 +2,6 @@ from typing import List
 
 
 class Packet:
-    literal_packet_type = 4
 
     def __init__(self, version, type):
         self.version = version
