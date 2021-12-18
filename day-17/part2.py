@@ -8,15 +8,22 @@ def fire_ze_missiles():
     [x_bounds, y_bounds] = read_input(False)
 
     min_x_velocity = 1
-    max_x_velocity = x_bounds[1]
-    min_y_velocity = y_bounds[1]
-    max_y_velocity = 1000    
+    max_x_velocity = x_bounds[1] + 2
+    min_y_velocity = y_bounds[0] - 2
+    max_y_velocity = 1000   
+
+    print(f"min_x_velocity: {min_x_velocity}")
+    print(f"max_x_velocity: {max_x_velocity}")
+    print(f"min_y_velocity: {min_y_velocity}")
+    print(f"max_y_velocity: {max_y_velocity}")
     
     x_velocities = [x for x in range(min_x_velocity, max_x_velocity)]
     y_velocities = [y for y in range(min_y_velocity, max_y_velocity)]
     max_ys = []
     
     shots = [[x, y]for x in x_velocities for y in y_velocities]
+
+    launch_probe(6, 0, x_bounds, y_bounds)
 
     print(f"shooting {len(shots)} missiles")
     for [x_velocity, y_velocity] in shots:
@@ -25,14 +32,14 @@ def fire_ze_missiles():
             max_ys.append(max_y)
 
     max_y = max(max_ys)
-    print(f"max_y: {max_y}")
+    print(f"hits: {len(max_ys)}")
 
 
 def launch_probe(x_velocity, y_velocity, x_bounds, y_bounds):
     x_position = 0
     y_position = 0
     max_y = 0
-    while y_position > y_bounds[1]:
+    while y_position >= y_bounds[0]:
         x_position = x_position + x_velocity
         y_position = y_position + y_velocity
         if y_position > max_y:
@@ -77,7 +84,7 @@ def read_input(test=False) -> Dict:
 
     print(f"x_bounds: {x_bounds}")
     print(f"y_bounds: {y_bounds}")
-
+    
     return [x_bounds, y_bounds]
 
 
