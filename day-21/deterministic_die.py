@@ -1,7 +1,7 @@
 from typing import List
 
 
-class DeterministicDice:
+class DeterministicDie:
     def __init__(self):
         self.last_roll = 0
 
