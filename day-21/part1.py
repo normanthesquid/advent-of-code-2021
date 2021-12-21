@@ -25,16 +25,14 @@ def play(
             player_one_position = (
                 player_one_position + die.roll() + die.roll() + die.roll()
             )
-            if player_one_position > 10:
-                player_one_position = player_one_position % 10
+            player_one_position = player_one_position % 10
 
             player_one_score += player_one_position + 1
         else:
             player_two_position = (
                 player_two_position + die.roll() + die.roll() + die.roll()
             )
-            if player_two_position > 10:
-                player_two_position = player_two_position % 10
+            player_two_position = player_two_position % 10
 
             player_two_score += player_two_position + 1
         player_one_turn = not player_one_turn

@@ -1,5 +1,6 @@
 import unittest
 from part1 import play
+from part2 import play_dirac, branch_game
 from deterministic_die import DeterministicDie
 
 
@@ -211,6 +212,31 @@ class TestDay21(unittest.TestCase):
             result = die.roll()
 
         self.assertEqual(result, 2)
+
+    def test_dirac_game_with_test_starts(self):
+        """
+        Play the game using the test inputs
+        """
+        player_one_start = 4
+        player_two_start = 8
+        [player_one_wins, player_two_wins] = play_dirac(
+            player_one_start, player_two_start
+        )
+        self.assertEqual(player_one_wins, 444356092776315)
+        self.assertEqual(player_two_wins, 341960390180808)
+
+    def test_dirac_game_with_actual_starts(self):
+        """
+        Play the game using the test inputs
+        """
+        player_one_start = 1
+        player_two_start = 10
+        [player_one_wins, player_two_wins] = play_dirac(
+            player_one_start, player_two_start
+        )
+
+        print("\nplayer_one_wins:", player_one_wins)
+        print("player_two_wins:", player_two_wins)
 
 
 if __name__ == "__main__":
