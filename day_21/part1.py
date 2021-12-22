@@ -1,5 +1,5 @@
 import time
-from deterministic_die import DeterministicDie
+from day_21.deterministic_die import DeterministicDie
 
 
 def play(

@@ -1,7 +1,7 @@
 import unittest
-from part1 import play
-from part2 import play_dirac, branch_game
-from deterministic_die import DeterministicDie
+from day_21.part1 import play
+from day_21.part2 import play_dirac
+from day_21.deterministic_die import DeterministicDie
 
 
 class TestDay21(unittest.TestCase):

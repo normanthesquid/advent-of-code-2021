@@ -1,6 +1,6 @@
 import time
 from typing import List
-from functools import cache
+from functools import lru_cache
 from itertools import product
 
 
@@ -16,7 +16,7 @@ def play_dirac(
     return branch_game(False, player_one_position, 0, player_two_position, 0)
 
 
-@cache
+@lru_cache(maxsize=None)
 def branch_game(
     player_one_turn,
     player_one_position,
@@ -64,7 +64,7 @@ sides = [1, 2, 3]
 rolls = [sum(x) for x in product(sides, repeat=3)]
 
 
-@cache
+@lru_cache(maxsize=None)
 def roll_dice(position: int):
     results = []
     for roll in rolls:
