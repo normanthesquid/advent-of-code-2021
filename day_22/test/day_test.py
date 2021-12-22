@@ -1,5 +1,6 @@
 import unittest
 from day_22.instruction import Instruction
+from day_22.part2 import reboot_reactor
 
 
 class TestDay21(unittest.TestCase):
@@ -38,7 +39,7 @@ class TestDay21(unittest.TestCase):
         """
         instruction = Instruction("on x=10..12,y=10..12,z=10..12")
 
-        self.assertEqual(len(instruction.affected_cubes), 27)   
+        self.assertEqual(len(instruction.affected_cubes()), 27)   
 
     def test_instruction_construction_x_below_of_space_range(self):
         """
@@ -46,7 +47,7 @@ class TestDay21(unittest.TestCase):
         """
         instruction = Instruction("on x=-54112..-39298,y=-10..-10,z=-10..10", 50)
 
-        self.assertEqual(len(instruction.affected_cubes), 0)
+        self.assertEqual(len(instruction.affected_cubes()), 0)
 
     def test_instruction_construction_x_above_of_space_range(self):
         """
@@ -54,7 +55,7 @@ class TestDay21(unittest.TestCase):
         """
         instruction = Instruction("on x=34112..39298,y=-10..-10,z=-10..10", 50)
 
-        self.assertEqual(len(instruction.affected_cubes), 0) 
+        self.assertEqual(len(instruction.affected_cubes()), 0) 
 
     def test_instruction_construction_x_partial_space_range(self):
         """
@@ -62,7 +63,7 @@ class TestDay21(unittest.TestCase):
         """
         instruction = Instruction("on x=-51..-49,y=0..0,z=0..0", 50)
 
-        self.assertEqual(len(instruction.affected_cubes), 2) 
+        self.assertEqual(len(instruction.affected_cubes()), 2) 
 
     def test_instruction_construction_y_out_of_space_range(self):
         """
@@ -70,7 +71,7 @@ class TestDay21(unittest.TestCase):
         """
         instruction = Instruction("on x=-10..-10,y=-70..-60,z=-10..10", 50)
 
-        self.assertEqual(len(instruction.affected_cubes), 0) 
+        self.assertEqual(len(instruction.affected_cubes()), 0) 
 
     def test_instruction_construction_y_partial_space_range(self):
         """
@@ -78,7 +79,7 @@ class TestDay21(unittest.TestCase):
         """
         instruction = Instruction("on x=-10..-10,y=-51..-49,z=0..0", 50)
 
-        self.assertEqual(len(instruction.affected_cubes), 2) 
+        self.assertEqual(len(instruction.affected_cubes()), 2) 
 
     def test_instruction_construction_z_out_of_space_range(self):
         """
@@ -86,7 +87,7 @@ class TestDay21(unittest.TestCase):
         """
         instruction = Instruction("on x=-10..10,y=-10..10,z=-27449..-7877", 50)
 
-        self.assertEqual(len(instruction.affected_cubes), 0) 
+        self.assertEqual(len(instruction.affected_cubes()), 0) 
 
     def test_instruction_construction_z_partial_space_range(self):
         """
@@ -94,7 +95,24 @@ class TestDay21(unittest.TestCase):
         """
         instruction = Instruction("on x=0..0,y=0..0,z=-51..-49", 50)
 
-        self.assertEqual(len(instruction.affected_cubes), 2) 
+        self.assertEqual(len(instruction.affected_cubes()), 2) 
+
+    def test_part_2_input_3(self):
+        """
+        Make sure part 2 gets the expected output for input file 3
+        """
+        on_cubes = reboot_reactor(3)
+
+        self.assertEqual(on_cubes, 2758514936282235) 
+
+    def test_part_2_puzzle_input(self):
+        """
+        Make sure part 2 gets the expected output for the puzzle input
+        """
+        on_cubes = reboot_reactor()
+
+        self.assertIsNotNone(on_cubes) 
+        self.assertEqual(on_cubes, 1235484513229032) 
 
 
 if __name__ == "__main__":

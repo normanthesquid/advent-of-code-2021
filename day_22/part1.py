@@ -11,7 +11,7 @@ def reboot_reactor():
     cubes = dict()
 
     for instruction in instructions:
-        for cube in instruction.affected_cubes:
+        for cube in instruction.affected_cubes():
             cubes[cube] = instruction.on
 
     on_cubes = list(filter(lambda value: value == True, cubes.values()))
